@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Single PRAQuant root element -->
+  <xs:element name="PRAQuant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Model">
+          <xs:complexType>
+            <xs:attribute name="FaultTreeFile" type="xs:string" use="required" />
+            <xs:attribute name="DatabaseFile" type="xs:string" use="required" />
+            <xs:attribute name="CutsetFile" type="xs:string" use="required" />
+            <xs:attribute name="CAFTAProjectFile" type="xs:string" use="required" />
+            <xs:anyAttribute processContents="lax"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Options">
+          <xs:complexType>
+            <xs:attribute name="ACUBECount" type="xs:unsignedShort" use="required" />
+            <xs:attribute name="ACUBEEnabled" type="xs:boolean" use="required" />
+            <xs:attribute name="ClearLog" type="xs:boolean" use="required" />
+            <xs:attribute name="CurrentQuantifier" type="xs:string" use="required" />
+            <xs:attribute name="DeleCurVal" type="xs:boolean" use="required" />
+            <xs:attribute name="ExpandMods" type="xs:boolean" use="required" />
+            <xs:attribute name="ImportColumn" type="xs:string" use="required" />
+            <xs:attribute name="ImportOption" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="ImportTransOption" type="xs:boolean" use="required" />
+            <xs:attribute name="NoOverrideProbs" type="xs:boolean" use="required" />
+            <xs:attribute name="RunMissing" type="xs:boolean" use="required" />
+            <xs:attribute name="SaveAll" type="xs:boolean" use="required" />
+            <xs:attribute name="Singlefile" type="xs:boolean" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Runs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Run" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="NumCutsets" type="xs:unsignedInt" use="optional" />
+                  <xs:attribute name="ETName" type="xs:string" use="required" />
+                  <xs:attribute name="ETDate" type="xs:string" use="required" />
+                  <xs:attribute name="Gate" type="xs:string" use="required" />
+                  <xs:attribute name="Trunc" type="xs:float" use="required" />
+                  <xs:attribute name="NormalizedIE" type="xs:string" use="required" />
+                  <xs:attribute name="RunTime" type="xs:float" use="required" />
+                  <xs:attribute name="SeqProb" type="xs:float" use="optional" />
+                  <xs:attribute name="UnfactoredProb" type="xs:float" use="optional" />
+                  <xs:attribute name="RunDate" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Groups" />
+        <xs:element name="GridColumns">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Column" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Width" type="xs:unsignedByte" use="optional" />
+                  <xs:attribute name="Display" type="xs:unsignedByte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Columns">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Column" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="ColWidth" type="xs:unsignedShort" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GroupGridColumns" />
+        <xs:element name="GroupColumns">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Column" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="ColWidth" type="xs:unsignedShort" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
